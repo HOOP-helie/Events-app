@@ -1,13 +1,26 @@
 import React from 'react'
-import { Outlet } from 'react-router-dom'
+import { Outlet, useLoaderData } from 'react-router-dom'
+import EventList from "./../components/EventsList"
+export default function EventPage() {
+    const data = useLoaderData();
 
-function EventPage() {
+    if (!data.events) return <p>Error</p>
+
     return (
         <div>EventPage
-            <Outlet/>
+            <Outlet />
+            <EventList events={data.events} />
         </div>
-        
+
     )
 }
 
-export default EventPage
+async function eventsLoader() {
+    const res = await fetch(`http://localhost:8080/events`);
+    if (!res.ok) {
+        throw new Response("Not Found");
+    }
+    return res.json();
+}
+
+export { eventsLoader }
