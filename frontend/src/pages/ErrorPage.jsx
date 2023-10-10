@@ -1,12 +1,27 @@
 import React from 'react'
-import { useRouteError, isRouteErrorResponse } from 'react-router-dom'
+import { useRouteError } from 'react-router-dom'
+import PageContent from "./../pages/PageContent"
 
 function ErrorPage() {
     const error = useRouteError();
-    if (isRouteErrorResponse(error)) return <p>{error.data}</p>
+
+    let title = "An error occured";
+    let message = "Something went wrong";
+
+    if (error.status === 500) {
+        message = error.data.message
+    }
+
+    if (error.status === 400) {
+        title = "Not found";
+        message = "Could not find resource or page";
+    }
+
 
     return (
-        <div>An error occured</div>
+        <PageContent title={title}>
+            <p>{message}</p>
+        </PageContent>
     )
 }
 
