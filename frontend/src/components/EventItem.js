@@ -19,4 +19,5 @@ function EventItem({ event }) {
   );
 }
 
+
 export default EventItem;
