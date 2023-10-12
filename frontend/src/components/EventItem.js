@@ -6,10 +6,10 @@ function EventItem({ event }) {
 
   function startDeleteHandler() {
     const proceed = window.confirm("Do you wish to proceed?")
+    
     if (proceed) {
       submit(null, { method: "delete" })
     }
-
   }
 
   return (
