@@ -12,7 +12,7 @@ import ErrorPage from "./pages/ErrorPage"
 import EventsLayout from "./layout/EventsLayout";
 import { action as manipulateEventAction } from "./components/EventForm";
 import NewsletterPage, { action as newsletterAction } from './pages/NewsletterPage';
-import AuthenticationPage from "./pages/AuthenticationPage";
+import AuthenticationPage, { action as authAction } from "./pages/AuthenticationPage";
 
 const router = createBrowserRouter([
   {
@@ -60,6 +60,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'auth',
+        action: authAction,
         element: <AuthenticationPage />,
       },
       {
