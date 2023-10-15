@@ -24,6 +24,7 @@ export async function action({ params, request }) {
     const res = await fetch(`http://localhost:8080/events/` + params.id, {
         method: request.method
     });
+
     if (!res.ok) {
         throw json({ message: "Could not delete event" }, { status: 500 });
     }
