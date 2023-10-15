@@ -1,6 +1,7 @@
 import {
   createBrowserRouter,
   RouterProvider,
+  Navigate
 } from "react-router-dom";
 import HomePage from "./pages/HomePage"
 import RootLayout from "./layout/RootLayout"
@@ -13,6 +14,7 @@ import EventsLayout from "./layout/EventsLayout";
 import { action as manipulateEventAction } from "./components/EventForm";
 import NewsletterPage, { action as newsletterAction } from './pages/NewsletterPage';
 import AuthenticationPage, { action as authAction } from "./pages/AuthenticationPage";
+import { action as logoutAction } from "./pages/LogoutPage"
 
 const router = createBrowserRouter([
   {
@@ -68,7 +70,11 @@ const router = createBrowserRouter([
         element: <NewsletterPage />,
         action: newsletterAction,
       },
+      {
+        path: 'logout',
+        action: logoutAction,
 
+      },
     ]
   },
 
